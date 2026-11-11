@@ -1,6 +1,13 @@
-# Anomaly UI Studio — version 0.6
+# Anomaly UI Studio — Version 0.6
 
-A local Rust/egui XML layout editor for S.T.A.L.K.E.R. Anomaly. This first version focuses on opening real files, visually editing rectangles, and exporting minimal source-preserving changes.
+A local Rust/egui XML layout editor for S.T.A.L.K.E.R. Anomaly.
+</br>
+This version focuses on opening files, visually editing rectangles, and exporting minimal source-preserving changes.
+
+<img width="2083" height="1400" alt="Screenshot 2026-11-12 002320" src="https://github.com/user-attachments/assets/9605f6c8-a0a1-4205-9219-0b521cddbbf3" />
+<img width="2083" height="1400" alt="Screenshot 2026-11-12 003314" src="https://github.com/user-attachments/assets/f87097a5-749c-4847-8a39-8c2a01c0fcd2" />
+<img width="2083" height="1400" alt="Screenshot 2026-11-12 003053" src="https://github.com/user-attachments/assets/8f305df6-e54d-43e8-b16f-c1604cdb558a" />
+<img width="2083" height="1400" alt="Screenshot 2026-11-12 003018" src="https://github.com/user-attachments/assets/baae8578-d3ae-4b4f-a3f3-4456ecf075d0" />
 
 ## Start
 
@@ -82,3 +89,6 @@ Run `./build.ps1 -Test -OutputName "Anomaly UI Studio v0.6.exe"` from PowerShell
 Tests cover exact text preservation, duplicate nodes, includes, encoding, malformed nesting, DDS channel masks, row padding, alpha/luminance, truncated data, BC1–BC7 decoding, descriptor/image priority, optional base fallback, settings compatibility, pixel zoom/DPI, explicit fit, axis locking, fine movement, proportional resizing, rendered axis guides, pointer-anchored wheel zoom, middle-button panning without XML edits, atlas sizing, selection-focused atlas navigation, native-size region previews, texture diagnostics and proportional-resize crossover/modifier regressions. `anomaly-ui-editor.exe --validate-game` checks byte-for-byte unchanged export of the configured base HUD and menu files. It does not launch the GUI or modify game data.
 
 `anomaly-ui-editor.exe --check-mod-assets <folder> ...` decodes DDS files recursively and writes `asset-validation.txt` in the current directory. This is a diagnostic mode and does not modify source textures.
+
+---
+made with ❤️ by SavageBulldogOG
