@@ -105,12 +105,4 @@ Distributed under the [MIT License](LICENSE). Keep its copyright and permission 
 
 ---
 
-## Reuse
-
-This software is provided "as is", without warranty of any kind. It is free to use, modify, and distribute provided you credit the author (SavageBulldog) and include a link back to the original repository.
-
-[Original repository](https://github.com/SBDG-0/crispy_anomaly_ui_studio)
-
----
-
 made with ❤️ by SavageBulldogOG
