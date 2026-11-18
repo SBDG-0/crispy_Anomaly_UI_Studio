@@ -1,17 +1,27 @@
 # Anomaly UI Studio — Version 0.6
 
+## Description
+
 A local Rust/egui XML layout editor for S.T.A.L.K.E.R. Anomaly.
-</br>
+
 This version focuses on opening files, visually editing rectangles, and exporting minimal source-preserving changes.
 
-<img width="2083" height="1400" alt="Screenshot 2026-11-12 002320" src="https://github.com/user-attachments/assets/9605f6c8-a0a1-4205-9219-0b521cddbbf3" />
-<img width="2083" height="1400" alt="Screenshot 2026-11-12 003314" src="https://github.com/user-attachments/assets/f87097a5-749c-4847-8a39-8c2a01c0fcd2" />
-<img width="2083" height="1400" alt="Screenshot 2026-11-12 003053" src="https://github.com/user-attachments/assets/8f305df6-e54d-43e8-b16f-c1604cdb558a" />
-<img width="2083" height="1400" alt="Screenshot 2026-11-12 003018" src="https://github.com/user-attachments/assets/baae8578-d3ae-4b4f-a3f3-4456ecf075d0" />
+## Preview
 
-## Start
+<img src="https://github.com/user-attachments/assets/9605f6c8-a0a1-4205-9219-0b521cddbbf3" alt="Screenshot 2026-11-12 002320" width="900" />
 
-Download latest version from [releases](https://github.com/SBDG-0/crispy_anomaly_ui_studio/releases).
+## Features
+
+- Native GPU-rendered canvas, zoom, grid, bounds, selection and movement/resizing.
+- Background texture indexing and decoding, cached DDS atlas previews, texture crop rectangles and tint. Uncompressed RGB/RGBA/BGRA, luminance and alpha DDS formats are supported alongside BC1–BC7 (including DXT1/3/5) and additional formats handled by the DDS library. Only the base mip is previewed. Unsupported or malformed formats report their specific decoding error and path.
+- Base and mod-layer XML browsing; 16:9 and ultrawide output resolutions with fixed pixel zoom.
+- Existing x/y/width/height attribute editing and undo/redo.
+- XML export preserving comments, includes, whitespace, attribute order and original UTF-8/Windows-1251 encoding.
+- Sample progress fills and placeholder text. Select a progress bar to access **Sample fill (preview only)** in Properties. This replaces the old toolbar **Bar value** slider; it only simulates health/stamina fill and never changes XML.
+
+## Getting started
+
+Download the latest version from [Releases](https://github.com/SBDG-0/crispy_anomaly_ui_studio/releases).
 
 Unzip and open `Anomaly UI Studio v0.6.exe`. No installation or Rust runtime is required.
 
@@ -31,7 +41,7 @@ Expand **Layers** above the file list to manage sources. The panel accepts a mod
 
 Export and discard pending edits before changing layers; the controls are disabled while edits are pending. Layer paths, enabled states, priority, editor font size and atlas height are remembered in `studio-layers.txt` next to the executable. Older settings files remain compatible. This file contains local folder paths and is not required when sharing the application. This is an explicit editor layer order, not an automatic import of MO2 priority. DART's runtime transformations are not applied.
 
-## Zoom, output resolution and editor font size
+## Zoom, output resolution and font size
 
 Choose a target resolution in the preview preset selector: 1920x1080, 2560x1440, 3840x2160, 2560x1080 or 3440x1440. At **1× pixels**, one output pixel equals one physical monitor pixel, accounting for Windows DPI scaling. The canvas can extend beyond the viewport; hold the middle mouse button and drag to pan. The ordinary mouse wheel also pans the canvas. XML still uses its 1024x768 virtual coordinate system.
 
@@ -57,15 +67,6 @@ Not every XML element has artwork of its own. Containers can render children; te
 
 The inspector distinguishes no declared texture, empty placeholders, unresolved IDs, and descriptors whose image is absent from the enabled sources. Missing resolution is not automatically classified as scripted. The default _e state of a button or _back piece of a frame may be shown as a clearly labeled partial preview. Complete state/composite rendering and arbitrary runtime texture assignments still require engine/script-specific support.
 
-## What works
-
-- Native GPU-rendered canvas, zoom, grid, bounds, selection and movement/resizing.
-- Background texture indexing and decoding, cached DDS atlas previews, texture crop rectangles and tint. Uncompressed RGB/RGBA/BGRA, luminance and alpha DDS formats are supported alongside BC1–BC7 (including DXT1/3/5) and additional formats handled by the DDS library. Only the base mip is previewed. Unsupported or malformed formats report their specific decoding error and path.
-- Base and mod-layer XML browsing; 16:9 and ultrawide output resolutions with fixed pixel zoom.
-- Existing x/y/width/height attribute editing and undo/redo.
-- XML export preserving comments, includes, whitespace, attribute order and original UTF-8/Windows-1251 encoding.
-- Sample progress fills and placeholder text. Select a progress bar to access **Sample fill (preview only)** in Properties. This replaces the old toolbar **Bar value** slider; it only simulates health/stamina fill and never changes XML.
-
 ## Preview limits
 
 This is an **XML layout prototype**, not an engine renderer. The output selector changes preview dimensions only. It does not generate or correct a _21 layout; open and edit the actual _21 file separately.
@@ -90,5 +91,26 @@ Tests cover exact text preservation, duplicate nodes, includes, encoding, malfor
 
 `anomaly-ui-editor.exe --check-mod-assets <folder> ...` decodes DDS files recursively and writes `asset-validation.txt` in the current directory. This is a diagnostic mode and does not modify source textures.
 
+## More screenshots
+
+<img src="https://github.com/user-attachments/assets/f87097a5-749c-4847-8a39-8c2a01c0fcd2" alt="Screenshot 2026-11-12 003314" width="900" />
+
+<img src="https://github.com/user-attachments/assets/8f305df6-e54d-43e8-b16f-c1604cdb558a" alt="Screenshot 2026-11-12 003053" width="900" />
+
+<img src="https://github.com/user-attachments/assets/baae8578-d3ae-4b4f-a3f3-4456ecf075d0" alt="Screenshot 2026-11-12 003018" width="900" />
+
+## License
+
+Distributed under the [MIT License](LICENSE). Keep its copyright and permission notice with copies of the software.
+
 ---
+
+## Reuse
+
+This software is provided "as is", without warranty of any kind. It is free to use, modify, and distribute provided you credit the author (SavageBulldog) and include a link back to the original repository.
+
+[Original repository](https://github.com/SBDG-0/crispy_anomaly_ui_studio)
+
+---
+
 made with ❤️ by SavageBulldogOG
