@@ -1,18 +1,20 @@
+[workspace]
+members = ["editors/icons", "editors/layout", "crates/core"]
+resolver = "2"
+
 [package]
-name = "anomaly-ui-editor"
-version = "0.6.0"
+name = "anomaly-studio"
+version = "0.7.0"
 edition = "2021"
 
 [dependencies]
-eframe = { version = "0.31.1", default-features = false, features = ["glow", "default_fonts"] }
-egui = "0.31.1"
-xmlparser = "0.13"
-encoding_rs = "0.8"
-image = { version = "0.25", default-features = false, features = ["dds", "png", "tga", "jpeg", "ico"] }
 rfd = "0.15"
-walkdir = "2"
-image_dds = { version = "0.7.2", default-features = false, features = ["ddsfile", "image"] }
+studio-core = { path = "crates/core" }
+eframe = { version = "0.31.1", default-features = false, features = ["glow", "default_fonts"] }
+image = { version = "0.25", default-features = false, features = ["ico"] }
+studio-icons = { path = "editors/icons" }
+studio-layout = { path = "editors/layout" }
 
 [profile.release]
+panic = "unwind"
 opt-level = 2
-

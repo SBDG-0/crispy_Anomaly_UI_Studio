@@ -1,0 +1,11 @@
+[package]
+name = "studio-core"
+version = "0.1.0"
+edition = "2021"
+[dependencies]
+egui = "0.31.1"
+xmlparser = "0.13"
+encoding_rs = "0.8"
+image = { version = "0.25", default-features = false, features = ["dds", "png", "tga", "jpeg", "ico"] }
+walkdir = "2"
+image_dds = { version = "0.7.2", default-features = false, features = ["ddsfile", "image"] }

@@ -24,3 +24,14 @@ studio-layers.txt
 .local-backups/
 .readme-backups/
 # END local Codex files
+
+# Combined studio local state
+/smoke-test/
+/verification.log
+last-workspace.txt
+studio-settings.txt
+.icon-studio/
+studio-appearance.txt
+studio-settings.txt.*.bak
+.studio-recovery/
+studio-error*.log

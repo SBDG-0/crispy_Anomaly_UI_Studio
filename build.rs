@@ -1,19 +1,42 @@
-use std::{env,path::PathBuf,process::Command};
-fn main(){
+use std::{env, path::PathBuf, process::Command};
+fn main() {
     println!("cargo:rerun-if-changed=assets/app.ico");
     println!("cargo:rerun-if-changed=assets/app.rc");
-    let target=env::var("TARGET").unwrap();
-    if !target.contains("windows"){return}
-    let output=PathBuf::from(env::var_os("OUT_DIR").unwrap());
-    let resource=if target.ends_with("gnu"){
-        let object=output.join("app-icon.o");
-        let compiler=env::var("WINDRES").unwrap_or_else(|_|"windres".into());
-        let status=Command::new(compiler).args(["-i","assets/app.rc","-O","coff","-o"]).arg(&object).status().expect("Windows resource compiler (windres) is required");
-        assert!(status.success(),"Icon resource compilation failed");object
-    }else{
-        let object=output.join("app-icon.res");
-        let status=Command::new("rc.exe").arg("/nologo").arg(format!("/fo{}",object.display())).arg("assets/app.rc").status().expect("Windows SDK resource compiler (rc.exe) is required");
-        assert!(status.success(),"Icon resource compilation failed");object
+    let target = env::var("TARGET").unwrap();
+    if !target.contains("windows") {
+        return;
+    }
+    let out = PathBuf::from(env::var_os("OUT_DIR").unwrap());
+    let (tool, args, resource) = if target.contains("gnu") {
+        let file = out.join("app-icon.o");
+        (
+            "windres",
+            vec![
+                "-i".into(),
+                "assets/app.rc".into(),
+                "-o".into(),
+                file.to_string_lossy().into_owned(),
+            ],
+            file,
+        )
+    } else {
+        let file = out.join("app-icon.res");
+        (
+            "rc",
+            vec![
+                "/nologo".into(),
+                format!("/fo{}", file.display()),
+                "assets/app.rc".into(),
+            ],
+            file,
+        )
     };
-    println!("cargo:rustc-link-arg={}",resource.display());
+    let result = Command::new(tool).args(args).status().expect(
+        "Install windres (GNU toolchain) or Windows SDK rc (MSVC toolchain) to embed the app icon",
+    );
+    assert!(
+        result.success(),
+        "Application icon resource compilation failed"
+    );
+    println!("cargo:rustc-link-arg={}", resource.display());
 }
