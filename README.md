@@ -6,13 +6,22 @@ A native Rust editor for S.T.A.L.K.E.R. Anomaly mod authors, combining UI layout
 
 ## Preview
 
-The following screenshots show the earlier UI Studio interface. Version 0.7 adds the shared mode bar and direct source saving.
+The following screenshots show the earlier UI Studio and Icon Studio interfaces. Version 0.7 adds the shared mode bar and direct source saving.
 
-<img src="https://github.com/user-attachments/assets/9605f6c8-a0a1-4205-9219-0b521cddbbf3" alt="Screenshot 2026-11-12 002320" width="900" />
-
-The following screenshots show the earlier Icon Studio interface. Version 0.7 adds the shared mode bar and direct source saving.
-
-<img src="https://github.com/user-attachments/assets/d8813cb6-41ae-4cbc-b076-ad9f0ec43460" alt="ltx_mod_system_icon" width="900" />
+<table>
+  <tr>
+    <th width="50%">UI Editor</th>
+    <th width="50%">Icons Editor</th>
+  </tr>
+  <tr>
+    <td>
+      <img src="https://github.com/user-attachments/assets/9605f6c8-a0a1-4205-9219-0b521cddbbf3" alt="Screenshot 2026-11-12 002320" width="450" />
+    </td>
+    <td>
+      <img src="https://github.com/user-attachments/assets/d8813cb6-41ae-4cbc-b076-ad9f0ec43460" alt="ltx_mod_system_icon" width="450" />
+    </td>
+  </tr>
+</table>
 
 ## Getting started
 
@@ -63,26 +72,43 @@ The [architecture guide](docs/architecture.md) describes the shared core and edi
 
 ## More screenshots
 
-The following screenshots show the earlier UI Studio and Icon Studio interface. Version 0.7 adds the shared mode bar and direct source saving.
+The following screenshots show the earlier UI Studio and Icon Studio interfaces. Version 0.7 adds the shared mode bar and direct source saving.
 
-<img src="https://github.com/user-attachments/assets/f87097a5-749c-4847-8a39-8c2a01c0fcd2" alt="Screenshot 2026-11-12 003314" width="900" />
-
-<img src="https://github.com/user-attachments/assets/8f305df6-e54d-43e8-b16f-c1604cdb558a" alt="Screenshot 2026-11-12 003053" width="900" />
-
-<img src="https://github.com/user-attachments/assets/baae8578-d3ae-4b4f-a3f3-4456ecf075d0" alt="Screenshot 2026-11-12 003018" width="900" />
-
-<img src="https://github.com/user-attachments/assets/144fec72-227a-4463-a913-6691648685ab" alt="ltx_mod_system_moved" width="900" />
-
-<img src="https://github.com/user-attachments/assets/664b9987-cbd3-40bb-b4e7-c23b1a5d79b3" alt="ltx_icon_override" width="900" />
-
-<img src="https://github.com/user-attachments/assets/380e8b4c-2645-4c37-aa48-53c58828ec91" alt="ltx_upgrade_icon" width="900" />
-
-<img src="https://github.com/user-attachments/assets/13032773-9aac-4bf6-94cd-4dcfba0f19b7" alt="ltx_hd_framework" width="900" />
-
-<img src="https://github.com/user-attachments/assets/ea38c825-ed89-4c77-9c52-3dfdba5e14a2" alt="xml_indicators" width="900" />
-
-<img src="https://github.com/user-attachments/assets/22ad96c7-243c-4f1e-9558-d34a140d6368" alt="xml_ui_icon" width="900" />
-
+<table>
+  <tr>
+    <td width="33%">
+      <img src="https://github.com/user-attachments/assets/f87097a5-749c-4847-8a39-8c2a01c0fcd2" alt="Screenshot 2026-11-12 003314" width="300" />
+    </td>
+    <td width="33%">
+      <img src="https://github.com/user-attachments/assets/8f305df6-e54d-43e8-b16f-c1604cdb558a" alt="Screenshot 2026-11-12 003053" width="300" />
+    </td>
+    <td width="33%">
+      <img src="https://github.com/user-attachments/assets/baae8578-d3ae-4b4f-a3f3-4456ecf075d0" alt="Screenshot 2026-11-12 003018" width="300" />
+    </td>
+  </tr>
+  <tr>
+    <td>
+      <img src="https://github.com/user-attachments/assets/144fec72-227a-4463-a913-6691648685ab" alt="ltx_mod_system_moved" width="300" />
+    </td>
+    <td>
+      <img src="https://github.com/user-attachments/assets/664b9987-cbd3-40bb-b4e7-c23b1a5d79b3" alt="ltx_icon_override" width="300" />
+    </td>
+    <td>
+      <img src="https://github.com/user-attachments/assets/380e8b4c-2645-4c37-aa48-53c58828ec91" alt="ltx_upgrade_icon" width="300" />
+    </td>
+  </tr>
+  <tr>
+    <td>
+      <img src="https://github.com/user-attachments/assets/13032773-9aac-4bf6-94cd-4dcfba0f19b7" alt="ltx_hd_framework" width="300" />
+    </td>
+    <td>
+      <img src="https://github.com/user-attachments/assets/ea38c825-ed89-4c77-9c52-3dfdba5e14a2" alt="xml_indicators" width="300" />
+    </td>
+    <td>
+      <img src="https://github.com/user-attachments/assets/22ad96c7-243c-4f1e-9558-d34a140d6368" alt="xml_ui_icon" width="300" />
+    </td>
+  </tr>
+</table>
 
 ## License
 
