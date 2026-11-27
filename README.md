@@ -12,7 +12,7 @@ The following screenshots show the earlier UI Studio interface. Version 0.7 adds
 
 ## Getting started
 
-Build with `./build.ps1 -Test`, then open `dist/Anomaly Studio v0.7.exe`. Existing standalone UI Studio releases remain available in the [repository releases](https://github.com/SBDG-0/crispy_anomaly_ui_studio/releases); a combined release has not been published automatically.
+Build with `./build.ps1 -Test`, then open `dist/Anomaly Studio v0.7.exe`. Existing standalone UI Studio releases remain available in the [repository releases](https://github.com/SBDG-0/crispy_anomaly_ui_studio/releases); tagged combined releases are built automatically by GitHub Actions.
 
 Choose the mod folder or its `gamedata` folder using the source controls. Select **UI Editor** or **Icons Editor** at the top. Both modes edit the files you open directly: **Save source / Ctrl+S** writes to the displayed source path, creates a timestamped backup, and refuses to overwrite an external change. No output mod folder or export step is required.
 
@@ -56,6 +56,12 @@ Use Rust with a working Windows linker and resource compiler (`windres` on GNU, 
 The [architecture guide](docs/architecture.md) describes the shared core and editor boundaries. [Changelog](CHANGELOG.md) records the migration. Historical [UI Studio 0.6](docs/ui-studio-0.6.md) and [Icon Studio 0.2](docs/icon-studio-0.2.md) guides preserve detailed controls and earlier screenshots; their standalone/export-only instructions do not describe the current workflow.
 
 `anomaly-studio --audit <folder>` performs the read-only DDS/LTX/XML audit.
+
+## Automatic releases
+
+Pushing a `v*` version tag runs the Windows release workflow. Tags such as `v0.7` and `v0.7.0` must match the root Cargo.toml version. The workflow checks formatting, tests the workspace, builds Windows x64, and publishes the executable, a ZIP with documentation/licenses, and SHA-256 checksums. Release notes include the features from this README and the matching version entry from CHANGELOG.md. Missing or mismatched version notes fail before publication.
+
+The workflow uses GitHub's built-in token; no personal token is required. Manual runs from Actions produce downloadable build artifacts without publishing a release. The tagged commit must include `.github/workflows/release.yml` and the release preparation script. A failed upload leaves a draft that can be resumed by rerunning the workflow; existing published releases are not overwritten.
 
 ## More screenshots
 
