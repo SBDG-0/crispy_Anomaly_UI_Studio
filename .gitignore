@@ -35,3 +35,5 @@ studio-appearance.txt
 studio-settings.txt.*.bak
 .studio-recovery/
 studio-error*.log
+
+/release-artifacts/

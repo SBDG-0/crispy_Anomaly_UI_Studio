@@ -72,3 +72,9 @@
 - Added Expand all and Collapse all to the Icons XML structure pane.
 - Added a saved UI Editor Follow checkbox that reveals and scrolls to canvas-selected elements without stealing focus.
 - Checked rendering with copied configuration files from the supplied mod and vanilla folders; original files were not modified.
+
+### Automatic releases — 2026-11-27
+
+- Added automatic Windows x64 builds and GitHub Releases when a matching version tag is pushed.
+- Release downloads include the executable, documentation/license ZIP and SHA-256 checksums.
+- Release notes include current features and the tagged version's changelog. Formatting and tests must pass before publishing; manual runs keep build artifacts without publishing.

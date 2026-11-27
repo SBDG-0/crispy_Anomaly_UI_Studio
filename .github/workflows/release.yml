@@ -1,0 +1,76 @@
+name: Windows release
+
+on:
+  push:
+    tags: ['v*']
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: release-${{ github.ref }}
+  cancel-in-progress: false
+
+jobs:
+  windows:
+    runs-on: windows-2022
+    timeout-minutes: 45
+    permissions:
+      contents: write
+    defaults:
+      run:
+        shell: pwsh
+    env:
+      CARGO_TERM_COLOR: always
+      RELEASE_TAG: ${{ github.ref_type == 'tag' && github.ref_name || '' }}
+    steps:
+      - uses: actions/checkout@v7
+        with:
+          persist-credentials: false
+      - name: Validate version and prepare Features and Changelog notes
+        run: ./scripts/prepare-release.ps1 -Tag $env:RELEASE_TAG -NotesOnly
+      - name: Install Rust
+        run: |
+          rustup toolchain install stable --profile minimal --component rustfmt
+          if ($LASTEXITCODE -ne 0) { throw 'Rust installation failed.' }
+          rustup default stable
+          if ($LASTEXITCODE -ne 0) { throw 'Rust selection failed.' }
+      - name: Test and build Windows x64
+        run: |
+          $vswhere = "${env:ProgramFiles(x86)}/Microsoft Visual Studio/Installer/vswhere.exe"
+          $installation = & $vswhere -latest -products '*' -requires Microsoft.VisualStudio.Component.VC.Tools.x86.x64 -property installationPath
+          if (!$installation) { throw 'Visual Studio C++ tools were not found.' }
+          Import-Module "$installation/Common7/Tools/Microsoft.VisualStudio.DevShell.dll"
+          Enter-VsDevShell -VsInstallPath $installation -SkipAutomaticLocation -DevCmdArguments '-arch=amd64 -host_arch=amd64'
+          cargo fmt --all --check
+          if ($LASTEXITCODE -ne 0) { throw 'Formatting check failed.' }
+          ./build.ps1 -Test
+      - name: Package release downloads
+        run: ./scripts/prepare-release.ps1 -Tag $env:RELEASE_TAG
+      - name: Keep downloadable build and release notes
+        uses: actions/upload-artifact@v7
+        with:
+          name: Anomaly-Studio-windows-x64
+          path: release-artifacts/*
+          if-no-files-found: error
+          retention-days: 14
+      - name: Publish tagged release
+        if: github.event_name == 'push' && startsWith(github.ref, 'refs/tags/v')
+        env:
+          GH_TOKEN: ${{ github.token }}
+          GH_REPO: ${{ github.repository }}
+        run: |
+          $release = Get-Content release-artifacts/release.json -Raw | ConvertFrom-Json
+          $existing = & gh release view $release.tag --json isDraft 2>$null
+          if ($LASTEXITCODE -eq 0) {
+            if (!(($existing | ConvertFrom-Json).isDraft)) { throw 'This tag already has a published release; use a new version tag.' }
+            gh release upload $release.tag @($release.assets) --clobber
+            if ($LASTEXITCODE -ne 0) { throw 'Uploading release assets failed.' }
+            gh release edit $release.tag --title $release.title --notes-file $release.notes
+          } else {
+            gh release create $release.tag @($release.assets) --verify-tag --draft --title $release.title --notes-file $release.notes
+          }
+          if ($LASTEXITCODE -ne 0) { throw 'Preparing the GitHub release failed.' }
+          gh release edit $release.tag --draft=false
+          if ($LASTEXITCODE -ne 0) { throw 'Publishing the GitHub release failed.' }
