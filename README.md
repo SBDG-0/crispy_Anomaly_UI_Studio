@@ -23,6 +23,8 @@ The following screenshots show the earlier UI Studio and Icon Studio interfaces.
   </tr>
 </table>
 
+[more screenshots](https://github.com/SBDG-0/crispy_Anomaly_UI_Studio#more-screenshots)
+
 ## Getting started
 
 Build with `./build.ps1 -Test`, then open `dist/Anomaly Studio v0.7.exe`. Existing standalone UI Studio releases remain available in the [repository releases](https://github.com/SBDG-0/crispy_anomaly_ui_studio/releases); tagged combined releases are built automatically by GitHub Actions.
