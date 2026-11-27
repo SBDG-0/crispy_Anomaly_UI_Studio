@@ -52,7 +52,7 @@ Download **$zipName** for the Windows x64 application, documentation and license
     Set-Content -LiteralPath $notes -Value $body -Encoding utf8
     if (!$NotesOnly) {
         $exe = Join-Path dist $executable
-        $required = @($exe, 'dist/README.md', 'dist/CHANGELOG.md', 'dist/LICENSE', 'dist/LICENSE-icons.txt', 'dist/LICENSE-layout.txt', 'dist/docs')
+        $required = @($exe, 'dist/README.md', 'dist/CHANGELOG.md', 'dist/LICENSE', 'dist/LICENSE-icons.txt', 'dist/LICENSE-layout.txt', 'dist/docs', 'dist/screenshots')
         foreach ($item in $required) { if (!(Test-Path -LiteralPath $item)) { throw "Build output is missing: $item. Run ./build.ps1 -Test first." } }
         Copy-Item -LiteralPath $exe -Destination (Join-Path $output $executable) -Force
         $zip = Join-Path $output $zipName

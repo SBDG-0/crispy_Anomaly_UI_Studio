@@ -6,7 +6,6 @@
 /asset-validation.txt
 *.zip
 studio-layers.txt
-/.images/
 
 # BEGIN local Codex files
 # Keep assistant guidance/configuration and local working backups off Git.

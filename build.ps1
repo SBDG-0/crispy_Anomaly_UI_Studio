@@ -27,6 +27,9 @@ try {
     Copy-Item -LiteralPath 'CHANGELOG.md' -Destination 'dist/CHANGELOG.md'
     Copy-Item -LiteralPath 'LICENSE' -Destination 'dist/LICENSE'
     $guide = (Get-Content -LiteralPath 'README.md' -Raw).Replace('(editors/icons/LICENSE)', '(LICENSE-icons.txt)').Replace('(editors/layout/LICENSE)', '(LICENSE-layout.txt)')
+    New-Item -ItemType Directory -Force -Path 'dist/screenshots' | Out-Null
+    Get-ChildItem -LiteralPath '.images' -File | Copy-Item -Destination 'dist/screenshots' -Force
+    $guide = $guide.Replace('src=".images/', 'src="screenshots/')
     $guide = $guide.Replace('made with ❤️ by SavageBulldogOG', '[Back to main page](../README.md)' + [Environment]::NewLine + [Environment]::NewLine + 'made with ❤️ by SavageBulldogOG')
     Set-Content -LiteralPath 'dist/README.md' -Value $guide -Encoding utf8
     Copy-Item -LiteralPath 'editors/icons/LICENSE' -Destination 'dist/LICENSE-icons.txt'
