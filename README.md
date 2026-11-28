@@ -72,11 +72,13 @@ The [architecture guide](docs/architecture.md) describes the shared core and edi
 
 `anomaly-studio --audit <folder>` performs the read-only DDS/LTX/XML audit.
 
+<!--
 ## Automatic releases
 
 Pushing a `v*` version tag runs the Windows release workflow. Tags such as `v0.7` and `v0.7.0` must match the root Cargo.toml version. The workflow checks formatting, tests the workspace, builds Windows x64, and publishes the executable, a ZIP with documentation/licenses, and SHA-256 checksums. Release notes include the features from this README and the matching version entry from CHANGELOG.md. Missing or mismatched version notes fail before publication.
 
 The workflow uses GitHub's built-in token; no personal token is required. Manual runs from Actions produce downloadable build artifacts without publishing a release. The tagged commit must include `.github/workflows/release.yml` and the release preparation script. A failed upload leaves a draft that can be resumed by rerunning the workflow; existing published releases are not overwritten.
+-->
 
 ## More screenshots
 
