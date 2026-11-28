@@ -122,7 +122,7 @@ The following screenshots show the earlier UI Studio and Icon Studio interfaces.
 
 ## License
 
-Distributed under the [MIT License](LICENSE). Original editor copyright and permission notices are retained in [Icons](editors/icons/LICENSE) and [UI Layout](editors/layout/LICENSE).
+Distributed under the [MIT License](LICENSE).
 
 ---
 
